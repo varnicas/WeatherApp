@@ -1,5 +1,4 @@
 import {
-  Button,
   Container,
   Row,
   Col,
@@ -10,10 +9,8 @@ import {
 } from "react-bootstrap";
 import "./App.css";
 import background from "./images/background5.jpg";
-import clouds from "./images/clouds.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { Toaster } from "react-hot-toast";
 import { toast } from "react-hot-toast";
 function App() {
   const [data, setData] = useState({});
@@ -39,7 +36,8 @@ function App() {
     "13n": "https://openweathermap.org/img/wn/13n@2x.png",
     "50n": "https://openweathermap.org/img/wn/50n@2x.png",
   };
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=8dbc257590322da8d68358769fa9e185`;
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
 
   const searchLocation = async (e) => {
     try {
